@@ -80,8 +80,7 @@
     <Compile Include="Data\DataReaderEntitySource.cs" />
     <Compile Include="Data\DataRowEntitySource.cs" />
     <Compile Include="Data\EntityBuilder.cs" />
-    <Compile Include="Data\IBaseDb.cs" />
-    <Compile Include="Data\IDb.cs" />
+    <Compile Include="Data\IData.cs" />
     <Compile Include="Data\ReferencedEntityAttribute.cs" />
     <Compile Include="Entity\IBaseResult.cs" />
     <Compile Include="Entity\ListData.cs" />

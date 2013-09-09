@@ -87,9 +87,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\XFramework.BLL\XFramework.BLL.csproj">
       <Project>{09BE9D8C-CCEA-41E1-9C11-02A90A9F53D4}</Project>
       <Name>XFramework.BLL</Name>
