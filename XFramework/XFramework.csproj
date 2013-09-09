@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Caching\readme.txt" />
+    <Content Include="Data\readme.txt" />
     <Content Include="lib\ELinq.dll" />
     <Content Include="lib\Enyim.Caching.dll" />
     <Content Include="lib\log4net.dll" />
