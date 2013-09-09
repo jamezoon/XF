@@ -1,0 +1,68 @@
+2013-09-03 09:51:41[97] ERROR index (null) - AppName=XFramework.Web
+LogTime=2013/9/3 9:51:41
+Title=abc
+Message=message
+ProcessName=xuxiulei
+ClientIp=127.0.0.1
+ClientIp2=127.0.0.1
+ServerIp=192.168.13.9
+UrlReferrer=
+RawUrl=/home/log
+
+2013-09-03 13:41:29[98] ERROR index (null) - AppName=XFramework.Web
+LogTime=2013/9/3 13:41:29
+Title=20
+Message=
+Exception: System.FormatException: 输入的不是有效的 Base-64 字符串，因为它包含非 Base-64 字符、两个以上的填充字符，或者填充字符间包含非法字符。
+   在 System.Convert.FromBase64_ComputeResultLength(Char* inputPtr, Int32 inputLength)
+   在 System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   在 System.Convert.FromBase64String(String s)
+   在 XFramework.Safe.Crypt.DESDecrypt(String s, String desKey) 位置 D:\MyDocument\MyCode\XFramework\XFramework\Safe\Crypt.cs:行号 56
+   在 XFramework.DB.DataCommand.BuildConnection() 位置 D:\MyDocument\MyCode\XFramework\XFramework\DB\DataCommand.cs:行号 561
+   在 XFramework.DB.DataCommand.BeginExecute() 位置 D:\MyDocument\MyCode\XFramework\XFramework\DB\DataCommand.cs:行号 450
+   在 XFramework.DB.DataCommand.ExecuteNonQuery() 位置 D:\MyDocument\MyCode\XFramework\XFramework\DB\DataCommand.cs:行号 226
+ProcessName=xuxiulei
+ClientIp=127.0.0.1
+ClientIp2=127.0.0.1
+ServerIp=192.168.13.9
+UrlReferrer=
+RawUrl=/home/db
+
+2013-09-03 13:41:59[88] ERROR index (null) - AppName=XFramework.Web
+LogTime=2013/9/3 13:41:58
+Title=20
+Message=
+Exception: System.FormatException: 输入的不是有效的 Base-64 字符串，因为它包含非 Base-64 字符、两个以上的填充字符，或者填充字符间包含非法字符。
+   在 System.Convert.FromBase64_ComputeResultLength(Char* inputPtr, Int32 inputLength)
+   在 System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   在 System.Convert.FromBase64String(String s)
+   在 XFramework.Safe.Crypt.DESDecrypt(String s, String desKey) 位置 D:\MyDocument\MyCode\XFramework\XFramework\Safe\Crypt.cs:行号 56
+   在 XFramework.DB.DataCommand.BuildConnection() 位置 D:\MyDocument\MyCode\XFramework\XFramework\DB\DataCommand.cs:行号 561
+   在 XFramework.DB.DataCommand.BeginExecute() 位置 D:\MyDocument\MyCode\XFramework\XFramework\DB\DataCommand.cs:行号 450
+   在 XFramework.DB.DataCommand.ExecuteNonQuery() 位置 D:\MyDocument\MyCode\XFramework\XFramework\DB\DataCommand.cs:行号 226
+ProcessName=xuxiulei
+ClientIp=127.0.0.1
+ClientIp2=127.0.0.1
+ServerIp=192.168.13.9
+UrlReferrer=
+RawUrl=/home/db
+
+2013-09-03 13:42:18[88] ERROR index (null) - AppName=XFramework.Web
+LogTime=2013/9/3 13:42:18
+Title=20
+Message=
+Exception: System.FormatException: 输入的不是有效的 Base-64 字符串，因为它包含非 Base-64 字符、两个以上的填充字符，或者填充字符间包含非法字符。
+   在 System.Convert.FromBase64_ComputeResultLength(Char* inputPtr, Int32 inputLength)
+   在 System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   在 System.Convert.FromBase64String(String s)
+   在 XFramework.Safe.Crypt.DESDecrypt(String s, String desKey) 位置 D:\MyDocument\MyCode\XFramework\XFramework\Safe\Crypt.cs:行号 56
+   在 XFramework.DB.DataCommand.BuildConnection() 位置 D:\MyDocument\MyCode\XFramework\XFramework\DB\DataCommand.cs:行号 561
+   在 XFramework.DB.DataCommand.BeginExecute() 位置 D:\MyDocument\MyCode\XFramework\XFramework\DB\DataCommand.cs:行号 450
+   在 XFramework.DB.DataCommand.ExecuteNonQuery() 位置 D:\MyDocument\MyCode\XFramework\XFramework\DB\DataCommand.cs:行号 226
+ProcessName=xuxiulei
+ClientIp=127.0.0.1
+ClientIp2=127.0.0.1
+ServerIp=192.168.13.9
+UrlReferrer=
+RawUrl=/home/db
+
