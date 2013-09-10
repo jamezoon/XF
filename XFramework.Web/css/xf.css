@@ -1,9 +1,22 @@
 ﻿body {font-size:14px;font-family: Verdana,Arial,'宋体';}
-h3{padding:5px 0 5px 15px;}
+h3{padding:8px 0 8px 15px;cursor:pointer;margin:1px 0 0 0;background:#aaa}
+p{margin:0;}
+h3:hover{background-color:#BF004D;color:#fff}
+h3.select{background-color:#BF004D;color:#fff}
 div.main{width:1000px; margin:auto;}
 div.logo{ padding:15px 0 30px 15px;}
-div.logo span{display:block;font-size:30px;text-shadow: 5px 5px 5px #ccc;color:#555}
-div.left{width:200px;margin:0 15px 0 0;background-color:#ccc;}
-div.right{width:785px;}
-ul{width:185px;padding-left:15px;list-style-type:none;}
-ul li{ padding:5px 0 5px 15px; margin:5px 0;}
+div.logo span{display:block;font-size:30px;text-shadow: 5px 5px 5px #ccc;color:#E50065}
+div.left{width:200px;margin:0 30px 0 0;background-color:#bbb; float:left;}
+div.right{width:770px;float:left;}
+ul{width:200px;padding:0;list-style-type:none;margin:0;display:none;font-size:12px;}
+ul li{ padding:5px 0 5px 15px; margin:1px 0;background:#eee;}
+ul li:hover,ul li:hover a{background:#D24683;color:#fff;text-decoration:underline;}
+ul li a{text-decoration:none;color:#000;}
+label.title{color:#000;font-weight:bold;}
+span.time{float:right;font-size:13px;}
+span.cnt{display:block;font-size:13px;padding:20px 0 10px; border-bottom:1px dotted #ccc;}
+
+span.item{display:block;margin:15px 0 15px 10px;}
+input.txt{width:260px;}
+input.txt40{width:40px;}
+label.desc{vertical-align:top;}

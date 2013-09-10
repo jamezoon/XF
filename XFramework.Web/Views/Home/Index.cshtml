@@ -1,29 +1,66 @@
-﻿@{
-    ViewBag.Title = "Home";
+﻿@using XFramework.Entity;
+@{
+    ViewBag.Title = "XFramework帮助类，自定义.Net Framework";
+
+    IList<CategoryEntity> categoryList = Model;
+
+    CategoryEntity categoryEntity = ViewBag.CategoryEntity;
 }
 <div class="main">
     <div class="logo">
-       <span>XFramework</span>
+        <span>XFramework</span>
     </div>
 </div>
 <div class="main">
     <div class="left">
-        <h3>XFramework</h3>
-        <ul>
-            <li><a href="javascript:void(0)">Lib</a></li>
-            <li><a href="javascript:void(0)">Caching</a></li>
-            <li><a href="javascript:void(0)">Compress</a></li>
-            <li><a href="javascript:void(0)">Data</a></li>
-            <li><a href="javascript:void(0)">Entity</a></li>
-            <li><a href="javascript:void(0)">Log</a></li>
-            <li><a href="javascript:void(0)">Safe</a></li>
-            <li><a href="javascript:void(0)">Util</a></li>
-        </ul>
-        <h3>C#</h3>
-        <h3>DataBase</h3>
-        <h3>Javascript</h3>
-        <h3>Css</h3>
+        <input type="hidden" id="hCategory" name="hCategory" value="@(categoryEntity == null ? 0 : categoryEntity.ParentID)" />
+        @foreach (var item in categoryList.Where(x => x.ParentID == 0).OrderBy(x => x.OrderID))
+        {
+            <h3>@item.CategoryName</h3>
+            <ul category="@item.CategoryID">
+                @foreach (var sub in categoryList.Where(x => x.ParentID == item.CategoryID).OrderBy(x => x.OrderID))
+                {
+                    <li><a href="?category=@sub.CategoryID" title="@sub.CategoryDesc">@sub.CategoryName</a></li>
+                }
+            </ul>
+        }
     </div>
-    <div class="right">
+    <div class="right">     
+        @if (categoryEntity == null)
+        {
+            <p>
+                XFramework自定义公共类</p>
+        }
+        else
+        {
+            foreach (var item in categoryEntity.Articles)
+             { 
+                <p>
+                    <label class="title">@item.ArticleTitle</label><span class="time">@item.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")</span>
+                    <span class="cnt">
+                        @item.ArticleDesc
+                    </span>
+                </p>
+             }
+        }
     </div>
 </div>
+<script>
+    $(function () {
+        var category = $('#hCategory').val();
+
+        if (category == '0')
+            $('.left ul:eq(0)').show().prev('h3').addClass('select');
+        else
+            $('.left ul[category=' + category + ']').show().prev('h3').addClass('select');
+
+        $('.left h3').click(function () {
+            if (!$(this).next('ul:visible')[0]) {
+                $(this).addClass('select')
+                .siblings('h3').removeClass('select').end()
+                .siblings('ul').hide().end()
+                .next().show();
+            }
+        });
+    });
+</script>

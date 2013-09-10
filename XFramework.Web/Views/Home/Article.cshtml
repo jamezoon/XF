@@ -1,0 +1,97 @@
+﻿@using XFramework.Entity;
+@{
+    ViewBag.Title = "添加XFramework帮助文章";
+    
+    IList<CategoryEntity> categoryList = Model;
+}
+
+<h2>添加帮助文章</h2>
+<form id="form">
+<span class="item">
+<label>文章分类：</label>
+<span>
+<select id="parent">
+    <option value="0">请选择父类</option>
+    @foreach (var item in categoryList.OrderBy(x => x.OrderID))
+    {
+        <option value="@item.CategoryID">@item.CategoryName</option>
+    }
+</select>
+<select id="child">
+    <option value="0">请选择子类</option>
+</select>
+</span>
+</span>
+<span class="item">
+    <label>文章名称：</label>
+    <span>
+        <input class="txt" id="txtTitle" name="txtTitle" />
+    </span>
+</span>
+<span class="item">
+    <label class="desc">文章描述：</label>
+    <span>
+        <textarea rows="15" cols="100" id="txtDesc" name="txtDesc"></textarea>
+    </span>
+</span>
+<span class="item">
+    <label>排序编号：</label>
+    <span>
+        <input class="txt40" id="txtOrderID" name="txtOrderID" />
+    </span>
+</span>
+<span class="item">
+    <label>是否跳转：</label>
+    <span>
+        <input type="hidden" id="hIsRedirect" name="hIsRedirect" />
+        <input type="checkbox" id="cbx" name="cbx" />
+    </span>
+</span>
+<span class="item">
+    <label>跳转URL：</label>
+    <span>
+        <input class="txt" id="txtRedirectUrl" name="txtRedirectUrl" />
+    </span>
+</span>
+<span class="item">    
+    <input type="button" id="btn" value="提交" />
+</span>
+</form>
+<script>
+    $(function () {
+        $('#parent').change(function () {
+            $('#child').empty().append('<option value="0">请选择子类</option>');
+            var _category = $(this).val();
+            if (_category > 0) {
+                $.ajax({
+                    type: 'post',
+                    url: '/home/category',
+                    data: { 'category': _category },
+                    success: function (data) {
+                        $.each(data, function (i, v) {
+                            $('#child').append('<option value="' + v.CategoryID + '">' + v.CategoryName + '</option>');
+                        });
+                    }
+                });
+            }
+        });
+
+        $('#btn').click(function () {
+            $.ajax({
+                type: 'post',
+                url: '/home/article',
+                data: $('form').serialize(),
+                success: function (str) {
+                    alert(str);
+                }
+            });
+        });
+        $('#cbx').click(function () {
+            if (this.checked)
+                $('#hIsRedirect').val('1');
+            else
+                $('#hIsRedirect').val('0');
+        });
+    });
+</script>
+
