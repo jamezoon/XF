@@ -1,7 +1,6 @@
 XF
 ==
 
-common util with csharp
 
 XFramework解决方案分为
 
