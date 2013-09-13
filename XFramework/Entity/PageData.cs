@@ -7,7 +7,7 @@ namespace XFramework.Entity
     /// </summary>
     /// <typeparam name="T">列表中的元素</typeparam>
     [Serializable]
-    public abstract class PageData<T> : ListData<T>
+    public class PageData<T> : ListData<T>
     {
         ///<summary>
         /// 总行数

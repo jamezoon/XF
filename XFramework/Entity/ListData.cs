@@ -9,7 +9,7 @@ namespace XFramework.Entity
     /// </summary>
     /// <typeparam name="T">列表中的元素</typeparam>
     [Serializable]
-    public abstract class ListData<T>
+    public class ListData<T>
     {
         /// <summary>
         /// 记录集

@@ -7,7 +7,7 @@ namespace XFramework.Entity
     /// </summary>
     /// <typeparam name="T">列表中的元素</typeparam>
     [Serializable]
-    public abstract class ListResult<T> : ListData<T>, IBaseResult
+    public class ListResult<T> : ListData<T>, IBaseResult
     {
         /// <summary>
         /// 返回值

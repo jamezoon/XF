@@ -43,8 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleData.cs" />
     <Compile Include="BaseData.cs" />
-    <Compile Include="CategoryData.cs" />
+    <Compile Include="DbConfigManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

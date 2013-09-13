@@ -15,16 +15,35 @@ namespace XFramework.Web.Controllers
     {
         public ActionResult Index()
         {
-            //test
+            return View();
+        }
 
-            IList<CategoryEntity> categoryList = BaseBLL<CategoryEntity>.Instance.GetList(x => true);
-
+        public ActionResult List()
+        {
             int categoryID = QueryString.Int32SafeQ("category");
 
-            if (categoryID > 0)
-                ViewBag.CategoryEntity = BLL.CategoryBLL.Get(categoryID);
+            if (categoryID == 0) return Redirect("index");
 
-            return View(categoryList);
+            CategoryEntity categoryEntity = BLL.BaseBLL<CategoryEntity>.Instance.Get(x => x.CategoryID == categoryID);
+
+            if (categoryEntity == null) return Redirect("index");
+
+            int pageIndex = QueryString.Int32SafeQ("page");
+
+            pageIndex = pageIndex < 1 ? 1 : pageIndex;
+
+            int pageSize = 10;
+
+            PageData<ArticleEntity> articleList = BLL.ArticleBLL.GetList(categoryID, pageIndex, pageSize);
+
+            return View(new { entity = categoryEntity, list = articleList });
+        }
+
+        public PartialViewResult Left()
+        {
+            IList<CategoryEntity> categoryList = BaseBLL<CategoryEntity>.Instance.GetList(x => true);
+
+            return PartialView(categoryList);
         }
 
         [ValidateInput(false)]

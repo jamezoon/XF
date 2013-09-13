@@ -16,14 +16,14 @@ namespace XFramework.Data
     public class BaseData<T> : IData<T>
     {
         /// <summary>
-        /// 数据连接字符串KEY值
+        /// ELinq数据库配置操作
         /// </summary>
-        public const string ConnectionStringName = "XFrameworkDB";
+        DbConfiguration dbConfiguration = null;
 
-        /// <summary>
-        /// ELinq数据库操作
-        /// </summary>
-        public static DbConfiguration dbConfiguration = DbConfiguration.Configure(ConnectionStringName).AddClass<T>();
+        private BaseData()
+        {
+            dbConfiguration = DbConfigManager.Instance.AddClass<T>().GetDbConfiguration();
+        }
 
         /// <summary>
         /// 数据库操作类实例
