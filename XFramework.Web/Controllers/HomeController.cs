@@ -15,6 +15,8 @@ namespace XFramework.Web.Controllers
     {
         public ActionResult Index()
         {
+            //test
+
             IList<CategoryEntity> categoryList = BaseBLL<CategoryEntity>.Instance.GetList(x => true);
 
             int categoryID = QueryString.Int32SafeQ("category");
@@ -37,7 +39,8 @@ namespace XFramework.Web.Controllers
                     CategoryID = FormString.Int32SafeQ("child"),
                     CreateTime = DateTime.Now,
                     IsRedirect = FormString.Int32SafeQ("hIsRedirect") == 1,
-                    RedirectUrl = FormString.SafeQ("txtRedirectUrl")
+                    RedirectUrl = FormString.SafeQ("txtRedirectUrl"),
+                    OrderID = FormString.Int32SafeQ("txtOrderID")
                 };
 
                 if (BaseBLL<ArticleEntity>.Instance.Add(entity))
@@ -55,11 +58,45 @@ namespace XFramework.Web.Controllers
 
         public ActionResult Category()
         {
+            if (Request.HttpMethod == "POST")
+            {
+                CategoryEntity entity = new CategoryEntity()
+                {
+                    CategoryName = FormString.SafeQ("txtCategoryName"),
+                    CategoryDesc = FormString.SafeQ("txtCategoryDesc"),
+                    ParentID = FormString.Int32SafeQ("parent"),
+                    CreateTime = DateTime.Now,
+                    OrderID = FormString.Int32SafeQ("txtOrderID")
+                };
+
+                if (BaseBLL<CategoryEntity>.Instance.Add(entity))
+                    return Content("添加成功！");
+                else
+                    return Content("添加失败！");
+            }
+            else
+            {
+                int categoryID = QueryString.Int32SafeQ("category");
+
+                IList<CategoryEntity> categoryList = BaseBLL<CategoryEntity>.Instance.GetList(x => x.ParentID == categoryID);
+
+                return View(categoryList);
+            }
+        }
+
+        public ActionResult GetCategory()
+        {
             int categoryID = FormString.Int32SafeQ("category");
 
             IList<CategoryEntity> categoryList = BaseBLL<CategoryEntity>.Instance.GetList(x => x.ParentID == categoryID);
 
-            return Json(categoryList.OrderBy(x => x.OrderID).Select(x => new { x.CategoryID, x.CategoryName }), JsonRequestBehavior.AllowGet);
+            return Json(categoryList.OrderBy(x => x.OrderID).Select(x => new
+            {
+                x.CategoryID,
+                x.CategoryName,
+                x.ParentID,
+                CreateTime = x.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")
+            }), JsonRequestBehavior.AllowGet);
         }
     }
 }
