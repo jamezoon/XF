@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using XFramework.BLL;
 using XFramework.Entity;
 using XFramework.Safe;
+using XFramework.Util;
 
 
 namespace XFramework.Web.Controllers
@@ -36,7 +37,16 @@ namespace XFramework.Web.Controllers
 
             PageData<ArticleEntity> articleList = BLL.ArticleBLL.GetList(categoryID, pageIndex, pageSize);
 
-            return View(new { entity = categoryEntity, list = articleList });
+            ViewBag.PageHtml = Pagination.GetPage(new PaginationEntity()
+            {
+                IsShowInfo = true,
+                CurrentPage = pageIndex,
+                PageSize = 10,
+                RecordCount = 300,
+                Url = "?category=" + categoryID.ToString()
+            });
+
+            return View();
         }
 
         public PartialViewResult Left()

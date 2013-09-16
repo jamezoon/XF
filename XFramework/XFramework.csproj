@@ -103,6 +103,7 @@
     <Compile Include="Safe\QueryString.cs" />
     <Compile Include="Util\CookieUtil.cs" />
     <Compile Include="Util\Misc.cs" />
+    <Compile Include="Util\PageUtil.cs" />
     <Compile Include="Util\StringUtils.cs" />
   </ItemGroup>
   <ItemGroup>
