@@ -47,6 +47,18 @@ namespace XFramework.Entity
         [Column]
         public DateTime CreateTime { get; set; }
 
+        /// <summary>
+        /// 文章修改时间
+        /// </summary>
+        [Column]
+        public DateTime ModifyTime { get; set; }
+
+        /// <summary>
+        /// 文章阅读数
+        /// </summary>
+        [Column]
+        public int ReadCount { get; set; }
+
         [Association(ThisKey = "CategoryID", OtherKey = "CategoryID")]
         public IList<ArticleEntity> Articles = new List<ArticleEntity>();
     }

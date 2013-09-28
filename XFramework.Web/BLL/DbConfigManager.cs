@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 using NLite.Data;
 
-namespace XFramework.Data
+namespace XFramework.BLL
 {
     /// <summary>
     /// ELinq数据库配置信息

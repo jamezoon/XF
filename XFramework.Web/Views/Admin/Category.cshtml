@@ -1,0 +1,148 @@
+﻿@using XFramework.Entity;
+@{
+    ViewBag.Title = "添加XFramework帮助文章分类"; 
+    IList<CategoryEntity> categoryList = Model;
+    var index = 0;
+}
+@section Head{    
+    <link type="text/css"  rel="stylesheet" href="/js/jquery.ui.dialog.css"/>
+    <script type="text/javascript" src="/js/jquery.ui.dialog.js"></script>
+}
+<div class="list">
+<h4>父类列表</h4>
+<table id="category" class="category" cellpadding="0" cellspacing="1">
+    <tr>
+        <td class="header">序号</td>
+        <td class="header">分类编号</td>
+        <td class="header">分类名称</td>
+        <td class="header">添加时间</td>
+        <td class="header">修改时间</td>
+        <td class="header">排序编号</td>
+        <td class="header">操作</td>
+    </tr>
+    @foreach (var item in categoryList)
+    {
+        <tr>
+            <td>@(++index)</td>
+            <td>@item.CategoryID</td>
+            <td>@item.CategoryName</td>
+            <td>@item.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+            <td>@item.ModifyTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+            <td>@item.OrderID</td>
+        <td><a href="javascript:void(0)">查看子类</a><a href="javascript:void(0)" rel="@item.CategoryDesc">修改</a><a href="javascript:void(0)">删除</a></td>
+        </tr>
+    }
+</table>
+<h4>子类列表</h4>
+<table id="sub" class="category" cellpadding="0" cellspacing="1">
+    <tr>
+        <td class="header">序号</td>
+        <td class="header">分类编号</td>
+        <td class="header">分类名称</td>
+        <td class="header">添加时间</td>
+        <td class="header">修改时间</td>
+        <td class="header">排序编号</td>
+        <td class="header">操作</td>
+    </tr>
+    <tr>
+        <td colspan="7">请点击父类列表行查看子类</td>
+    </tr>
+</table>
+</div>
+<div class="form">
+    <form id="form">
+    <div class="box">
+        <span class="item"><label><strong>添加帮助分类</strong></label></span>
+        <span class="item">
+            <label>父类编号：</label>
+            <span>
+                <select id="parent" name="parent">
+                    <option value="0">请选择父类</option>
+                    @foreach (var item in categoryList.OrderBy(x => x.OrderID))
+                    {
+                        <option value="@item.CategoryID">@item.CategoryName</option>
+                    }
+                </select>
+            </span>
+        </span>
+        <span class="item">
+            <label>分类名称：</label>
+            <span>
+                <input class="txt" id="txtCategoryName" name="txtCategoryName" />
+            </span>
+        </span>
+        <span class="item">
+            <label class="desc">分类描述：</label>
+            <span>
+                <textarea class="txt" id="txtCategoryDesc" name="txtCategoryDesc" cols="40" rows="8" ></textarea>
+            </span>
+        </span>
+        <span class="item">
+            <label>排序编号：</label>
+            <span>
+                <input class="txt40" id="txtOrderID" name="txtOrderID" />
+            </span>
+        </span>
+        <span class="item">    
+            <input type="button" id="btn" value="提交" />
+        </span>
+    </div>
+    </form>
+</div>
+<script>
+    $(function () {
+        hover($('#category tr:gt(0) td'));
+        $.each($('#category tr:gt(0)'), function () {
+            $(this).children('td:last').children('a:eq(0)').click(function () {
+                var clsid = $(this).parent().siblings('td:eq(1)').text();
+                $.ajax({
+                    type: 'post',
+                    url: '/admin/category?category=' + clsid,
+                    success: function (str) {
+                        $("#sub tr:gt(0)").remove();
+                        if (str.length > 0) {
+                            $.each(str, function (i, v) {
+                                $("#sub").append('<tr><td>' + i + 1 + '</td><td>' + v.CategoryID + '</td><td>' + v.CategoryName + '</td><td>' + v.CreateTime + '</td><td>' + v.ModifyTime + '</td><td>' + v.OrderID + '</td><td><a rel="' + v.CategoryDesc + '" href="javascript:void(0)">修改</a><a href="javascript:void(0)">删除</a><a href="/admin/article?category=' + v.CategoryID + '">添加文章</a></td></tr>');
+                            });
+                        }
+                        else {
+                            $("#sub").append('<tr><td colspan="7">暂无子类</td></tr>');
+                        }
+                        hover($('#sub tr:gt(0) td'));
+                        $.each($('#sub tr:gt(0)'), function () {
+                            $(this).children('td:last').children('a:eq(0)').click(function () {
+                                var $tr = $(this).parent();
+                                $('#parent').val(clsid);
+                                $('#txtCategoryName').val($tr.siblings('td:eq(2)').text());
+                                $('#txtCategoryDesc').val($(this).attr('rel'));
+                                $('#txtOrderID').val($tr.siblings('td:eq(4)').text());
+                            }).end().children('a:eq(1)').click(function () {
+                                if (confirm('是否确定删除?')) {
+
+                                }
+                            });
+                        });
+                    }
+                });
+            }).end().children('a:eq(1)').click(function () {
+                var $tr = $(this).parent();
+                $('#parent').val(0);
+                $('#txtCategoryName').val($tr.siblings('td:eq(2)').text());
+                $('#txtCategoryDesc').val($(this).attr('rel'));
+                $('#txtOrderID').val($tr.siblings('td:eq(4)').text());
+            }).end().children('a:eq(2)').click(function () {
+                if (confirm('是否确定删除?')) {
+
+                }
+            });
+        });
+
+        function hover($o) {
+            $o.hover(function () {
+                $(this).addClass("on").siblings().addClass("on").end().parent().siblings("tr:gt(0)").removeClass("on");
+            }, function () {
+                $(this).removeClass("on").siblings().removeClass("on");
+            });
+        }
+    });
+</script>

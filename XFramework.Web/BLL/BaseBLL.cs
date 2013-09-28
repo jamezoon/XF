@@ -4,21 +4,44 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Collections.Generic;
 
+using XFramework.Entity;
 using NLite.Data;
 using XFramework.Data;
 
 namespace XFramework.BLL
 {
     /// <summary>
-    /// 实现XFramework业务操作基本方法
+    /// 实现XFramework数据库操作基本方法
     /// </summary>
     /// <typeparam name="T">数据库单表数据实体</typeparam>
-    public class BaseBLL<T>
+    public class BaseBLL<T> : IData<T>
     {
         /// <summary>
-        /// 业务操作单元实例
+        /// ELinq数据库配置操作
         /// </summary>
-        public static BaseBLL<T> Instance { get { return new BaseBLL<T>(); } }
+        DbConfiguration dbConfiguration = null;
+
+        private BaseBLL()
+        {
+            dbConfiguration = DbConfigManager.Instance.AddClass<T>().GetDbConfiguration();
+        }
+
+        public static BaseBLL<T> Instance
+        {
+            get
+            {
+                return Nested.instance;
+            }
+        }
+
+        class Nested
+        {
+            static Nested()
+            {
+            }
+
+            internal static readonly BaseBLL<T> instance = new BaseBLL<T>();
+        }
 
         /// <summary>
         /// 添加一条新数据
@@ -27,7 +50,12 @@ namespace XFramework.BLL
         /// <returns>是否添加成功</returns>
         public bool Add(T t)
         {
-            return Data.BaseData<T>.Instance.Add(t);
+            using (IDbContext dbContext = dbConfiguration.CreateDbContext())
+            {
+                IDbSet<T> dbSet = dbContext.Set<T>();
+
+                return dbSet.Insert(t) > 0;
+            }
         }
 
         /// <summary>
@@ -38,7 +66,12 @@ namespace XFramework.BLL
         /// <returns>是否更新成功</returns>
         public bool Update(T t, Expression<Func<T, bool>> where)
         {
-            return Data.BaseData<T>.Instance.Update(t, where);
+            using (IDbContext dbContext = dbConfiguration.CreateDbContext())
+            {
+                IDbSet<T> dbSet = dbContext.Set<T>();
+
+                return dbSet.Update(t, where) > 0;
+            }
         }
 
         /// <summary>
@@ -49,7 +82,12 @@ namespace XFramework.BLL
         /// <returns>是否更新成功</returns>
         public bool Update(object select, Expression<Func<T, bool>> where)
         {
-            return Data.BaseData<T>.Instance.Update(select, where);
+            using (IDbContext dbContext = dbConfiguration.CreateDbContext())
+            {
+                IDbSet<T> dbSet = dbContext.Set<T>();
+
+                return dbSet.Update(select, where) > 0;
+            }
         }
 
         /// <summary>
@@ -59,7 +97,12 @@ namespace XFramework.BLL
         /// <returns>是否删除成功</returns>
         public bool Delete(Expression<Func<T, bool>> where)
         {
-            return Data.BaseData<T>.Instance.Delete(where);
+            using (IDbContext dbContext = dbConfiguration.CreateDbContext())
+            {
+                IDbSet<T> dbSet = dbContext.Set<T>();
+
+                return dbSet.Delete(where) > 0;
+            }
         }
 
         /// <summary>
@@ -69,7 +112,12 @@ namespace XFramework.BLL
         /// <returns>数据实体</returns>
         public T Get(Expression<Func<T, bool>> where)
         {
-            return Data.BaseData<T>.Instance.Get(where);
+            using (IDbContext dbContext = dbConfiguration.CreateDbContext())
+            {
+                IDbSet<T> dbSet = dbContext.Set<T>();
+
+                return dbSet.First(where);
+            }
         }
 
         /// <summary>
@@ -79,7 +127,22 @@ namespace XFramework.BLL
         /// <returns>数据列表</returns>
         public IList<T> GetList(Expression<Func<T, bool>> where)
         {
-            return Data.BaseData<T>.Instance.GetList(where);
+            using (IDbContext dbContext = dbConfiguration.CreateDbContext())
+            {
+                IDbSet<T> dbSet = dbContext.Set<T>();
+
+                return dbSet.Where(where).ToList();
+            }
+        }
+
+        public IList<T> GetList<S>(Expression<Func<T, bool>> where, Expression<Func<T, S>> orderby)
+        {
+            using (IDbContext dbContext = dbConfiguration.CreateDbContext())
+            {
+                IDbSet<T> dbSet = dbContext.Set<T>();
+
+                return dbSet.Where(where).OrderBy(orderby).ToList();
+            }
         }
     }
 }

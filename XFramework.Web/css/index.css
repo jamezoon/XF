@@ -12,11 +12,3 @@ ul{width:200px;padding:0;list-style-type:none;margin:0;display:none;font-size:12
 ul li{ padding:5px 0 5px 15px; margin:1px 0;background:#eee;}
 ul li:hover,ul li:hover a{background:#D24683;color:#fff;text-decoration:underline;}
 ul li a{text-decoration:none;color:#000;}
-label.title{color:#000;font-weight:bold;}
-span.time{float:right;font-size:13px;}
-span.cnt{display:block;font-size:13px;padding:20px 0 10px; border-bottom:1px dotted #ccc;}
-
-span.item{display:block;margin:15px 0 15px 10px;}
-input.txt{width:260px;}
-input.txt40{width:40px;}
-label.desc{vertical-align:top;}

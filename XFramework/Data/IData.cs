@@ -26,7 +26,7 @@ namespace XFramework.Data
         /// <param name="t">数据实体，必须包括主键</param>
         /// <param name="where">除了主键外的其他限制条件</param>
         /// <returns>是否更新成功</returns>
-        bool Update(T t, Expression<Func<T, bool>> where);        
+        bool Update(T t, Expression<Func<T, bool>> where);
 
         /// <summary>
         /// 根据条件更新数据

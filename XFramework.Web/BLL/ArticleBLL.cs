@@ -7,16 +7,16 @@ using System.Collections.Generic;
 using XFramework.Entity;
 using NLite.Data;
 
-namespace XFramework.Data
+namespace XFramework.BLL
 {
-    public class ArticleData
+    public class ArticleBLL
     {
         /// <summary>
         /// Elinq数据库配置
         /// </summary>
         static DbConfiguration dbConfiguration = null;
 
-        static ArticleData()
+        static ArticleBLL()
         {
             dbConfiguration = DbConfigManager.Instance.AddClass<CategoryEntity>().AddClass<ArticleEntity>().GetDbConfiguration();
         }
