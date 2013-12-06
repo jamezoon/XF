@@ -6,8 +6,7 @@ using System.Data.Common;
 using System.Collections.Generic;
 using System.Configuration;
 
-using XFramework.Safe;
-using XFramework.Log;
+using XFramework;
 
 namespace XFramework.Data
 {
@@ -150,9 +149,9 @@ namespace XFramework.Data
                     transaction.Commit();
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                LogUtil.Log("数据库操作(CommitTransaction)异常", ex);
+                throw;
             }
             finally
             {
@@ -172,9 +171,9 @@ namespace XFramework.Data
                     transaction.Rollback();
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                LogUtil.Log("数据库操作(RollbackTransaction)异常", ex);
+                throw;
             }
             finally
             {
@@ -198,9 +197,8 @@ namespace XFramework.Data
                 BuildCommand();
                 return this.databaseCommand.ExecuteScalar();
             }
-            catch (Exception ex)
+            catch
             {
-                LogUtil.Log("数据库操作(ExecuteScalar)异常", ex);
                 throw;
             }
             finally
@@ -221,9 +219,8 @@ namespace XFramework.Data
                 BuildCommand();
                 return this.databaseCommand.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch
             {
-                LogUtil.Log("数据库操作(ExecuteNonQuery)异常", ex);
                 throw;
             }
             finally
@@ -250,9 +247,8 @@ namespace XFramework.Data
                     return null;
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                LogUtil.Log("数据库操作(ExecuteEntity<T>)异常", ex);
                 throw;
             }
         }
@@ -277,9 +273,8 @@ namespace XFramework.Data
                     return new List<T>();
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                LogUtil.Log("数据库操作(ExecuteEntityList<T>)异常", ex);
                 throw;
             }
         }
@@ -297,9 +292,8 @@ namespace XFramework.Data
                 BuildCommand();
                 return this.databaseCommand.ExecuteReader();
             }
-            catch (Exception ex)
+            catch
             {
-                LogUtil.Log("数据库操作(ExecuteDataReader)异常", ex);
                 throw;
             }
             finally
@@ -324,9 +318,8 @@ namespace XFramework.Data
                 dataAdapter.Fill(dataSet);
                 return dataSet;
             }
-            catch (Exception ex)
+            catch
             {
-                LogUtil.Log("数据库操作(ExecuteDataSet)异常", ex);
                 throw;
             }
             finally

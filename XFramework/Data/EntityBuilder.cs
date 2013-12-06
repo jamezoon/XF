@@ -4,8 +4,6 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 
-using XFramework.Log;
-
 namespace XFramework.Data
 {
     /// <summary>
@@ -257,9 +255,7 @@ namespace XFramework.Data
                 }
                 else
                 {
-                    LogUtil.Log(
-                        "XFramework.DB实例对象Mapping时异常",
-                        string.Format("Mapping对象:{0}；属性名称：{1}；计算类型：{2}", type.FullName, propertyBindingInfo.PropertyInfo.Name, propertyBindingInfo.DataMapping.CaculatorType.FullName));
+                    throw new Exception("XFramework.DB实例对象Mapping时异常,异常信息：" + string.Format("Mapping对象:{0}；属性名称：{1}；计算类型：{2}", type.FullName, propertyBindingInfo.PropertyInfo.Name, propertyBindingInfo.DataMapping.CaculatorType.FullName));
                 }
             }
             return val;

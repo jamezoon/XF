@@ -4,8 +4,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Collections.Generic;
 
-using XFramework.Entity;
-
 namespace XFramework.Data
 {
     /// <summary>

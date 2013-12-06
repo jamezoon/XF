@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 
 using Enyim.Caching;
 using Enyim.Caching.Memcached;
@@ -8,7 +7,7 @@ using XFramework.Safe;
 using XFramework.Util;
 using XFramework.Log;
 
-namespace XFramework.Caching
+namespace XFramework
 {
     /// <summary>
     /// XFramework缓存(Memcached)操作
@@ -36,7 +35,7 @@ namespace XFramework.Caching
             }
             catch (Exception ex)
             {
-                LogUtil.Log("获取Memcache缓存异常", ex);
+                LogUtil.Log("XFramework获取缓存内容异常", ex, LogLevel.Warn);
 
                 return null;
             }
@@ -59,7 +58,7 @@ namespace XFramework.Caching
             }
             catch (Exception ex)
             {
-                LogUtil.Log("获取Memcache缓存异常", ex);
+                LogUtil.Log("XFramework获取缓存内容(范型)异常", ex, LogLevel.Warn);
 
                 return default(T);
             }
@@ -99,7 +98,7 @@ namespace XFramework.Caching
             }
             catch (Exception ex)
             {
-                LogUtil.Log("设置Memcache缓存异常", ex);
+                LogUtil.Log("XFramework设置缓存内容异常", ex, LogLevel.Warn);
 
                 return false;
             }
@@ -159,9 +158,9 @@ namespace XFramework.Caching
                 return true;
 
             //设置一个新的region值到缓存中
-            string _version = DateTime.Now.ToString("hhmmssfff");
+            string version = DateTime.Now.ToString("hhmmssfff");
 
-            return MemcachedClient.Store(StoreMode.Set, regionName, _version, TimeSpan.FromDays(7));
+            return MemcachedClient.Store(StoreMode.Set, regionName, version, TimeSpan.FromDays(7));
         }
 
         /// <summary>
@@ -180,12 +179,12 @@ namespace XFramework.Caching
 
             string _version = GetRegionVersion(regionName);
 
-            string _cacheKey = string.Format("{0}_{1}_{2}", regionName, _version, cacheKey);
+            cacheKey = string.Format("{0}_{1}_{2}", regionName, _version, cacheKey);
 
-            if (_cacheKey.Length > 250)
+            if (cacheKey.Length > 250)
                 throw new ArgumentException("键值长度不能超过250位");
 
-            return _cacheKey;
+            return cacheKey;
         }
 
         /// <summary>
@@ -200,8 +199,7 @@ namespace XFramework.Caching
 
             object obj = MemcachedClient.Get(regionName);
 
-            if (obj != null)
-                return (string)obj;
+            if (obj != null) return (string)obj;
 
             return DateTime.Now.ToString("hhmmssfff");
         }

@@ -1,7 +1,0 @@
-﻿.pagelist{font-size:12px;color:#676767;}
-.pagelist a,.pagelist span {margin:0 3px;}
-.pagelist a:hover{background:#F6F6F6;}
-.pagelist .pagefirst,.pagelist .pageprev,.pagelist .pagecurrendindex,.pagelist .pageindex,.pagelist .pagenext,.pagelist .pagelast,.pagelist .pagemore{height:20px; line-height:20px; border:1px #ddd solid;color:#676767;background:#fff;padding:0 6px; margin:0 3px;text-decoration:none;display:inline-block;}
-.pagelist .pagecurrendindex{border:0;background:#fff;font-weight:bolder;}
-.pagelist .pagecurrendindex:hover{background:#fff;}
-.pagelist .pageinfo lable{padding:0 6px;}

@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("XFramework")]
-[assembly: AssemblyDescription("CSharp自定义操作DLL")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("jmz")]
-[assembly: AssemblyProduct("XFramework.DLL")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("XFramework")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
-[assembly: AssemblyTrademark("XFramework")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 使此程序集中的类型
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("9d470c7a-65e5-4708-9f69-bbef1a3c9364")]
+[assembly: Guid("cd5c63c3-a77c-4011-9934-4c5926bc4991")]
 
 // 程序集的版本信息由下面四个值组成:
 //

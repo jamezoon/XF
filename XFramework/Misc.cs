@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 
-namespace XFramework.Util
+namespace XFramework
 {
     /// <summary>
     /// XFramework 浏览器IP地址操作类
@@ -58,8 +58,7 @@ namespace XFramework.Util
                 }
             }
 
-            if (string.IsNullOrEmpty(userHostAddress))
-                userHostAddress = request.UserHostAddress;
+            if (string.IsNullOrEmpty(userHostAddress)) userHostAddress = request.UserHostAddress;
 
             return userHostAddress;
         }

@@ -6,9 +6,10 @@ using System.Diagnostics;
 using System.Net;
 using System.Linq;
 using System.Management;
-using XFramework.Util;
 
-namespace XFramework.Log
+using XFramework.Log;
+
+namespace XFramework.Util
 {
     /// <summary>
     /// XFramework日志操作
@@ -146,10 +147,10 @@ namespace XFramework.Log
         /// <summary>
         /// 启动log4net组件（配置位于web.config中）
         /// </summary>
-        public static void StartLog4Net()
-        {
-            log4net.Config.XmlConfigurator.Configure();
-        }
+        //public static void StartLog4Net()
+        //{
+        //    log4net.Config.XmlConfigurator.Configure();
+        //}
 
         /// <summary>
         /// 记录程序异常日志
@@ -175,7 +176,7 @@ namespace XFramework.Log
         /// <param name="level">日志级别，默认错误信息，LogLevel.Error</param>
         public static void Log(string title, string logMsg, LogLevel level = LogLevel.Error)
         {
-            var logEntity = new LogEntity()
+            LogEntity logEntity = new LogEntity()
             {
                 AppName = appName,
                 LogMsg = logMsg,

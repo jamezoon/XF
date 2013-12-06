@@ -31,47 +31,39 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Enyim.Caching, Version=2.12.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Enyim.Caching.dll</HintPath>
+    <Reference Include="Enyim.Caching">
+      <HintPath>..\..\lib\Enyim.Caching.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\log4net.dll</HintPath>
+    <Reference Include="log4net">
+      <HintPath>..\..\lib\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="MemcachedProviders, Version=1.2.3102.35569, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\MemcachedProviders.dll</HintPath>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\..\lib\MongoDB.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Bson, Version=1.8.1.20, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver, Version=1.8.1.20, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\MongoDB.Driver.dll</HintPath>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\lib\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>Lib\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Yahoo.Yui.Compressor.NET20, Version=1.6.0.2, Culture=neutral, PublicKeyToken=0734edc2d38ad47d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Yahoo.Yui.Compressor.NET20.dll</HintPath>
+    <Reference Include="System.XML" />
+    <Reference Include="Yahoo.Yui.Compressor.NET20">
+      <HintPath>..\..\lib\Yahoo.Yui.Compressor.NET20.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caching\Memcached.cs" />
-    <Compile Include="Compress\AutoCompress.cs" />
+    <Compile Include="Compress.cs" />
+    <Compile Include="Util\CookieUtil.cs" />
+    <Compile Include="Safe\Crypt.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Data\DataCommand.cs" />
     <Compile Include="Data\DataCommandManager.cs" />
     <Compile Include="Data\DataMappingAttribute.cs" />
@@ -87,40 +79,43 @@
     <Compile Include="Entity\ListResult.cs" />
     <Compile Include="Entity\PageData.cs" />
     <Compile Include="Entity\PageResult.cs" />
-    <Compile Include="Entity\RegexFormat.cs" />
     <Compile Include="Entity\SingleResult.cs" />
     <Compile Include="Entity\SortOptions.cs" />
-    <Compile Include="Log\LogHandler.cs" />
-    <Compile Include="Log\ILog.cs" />
-    <Compile Include="Log\Log4NetLog.cs" />
-    <Compile Include="Log\LogEntity.cs" />
-    <Compile Include="Log\LogLevel.cs" />
-    <Compile Include="Log\LogUtil.cs" />
-    <Compile Include="Log\MongoDBLog.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Safe\Crypt.cs" />
     <Compile Include="Safe\FormString.cs" />
-    <Compile Include="Safe\QueryString.cs" />
-    <Compile Include="Util\CookieUtil.cs" />
-    <Compile Include="Util\Misc.cs" />
+    <Compile Include="Util\HttpWebUtil.cs" />
+    <Compile Include="Util\LogUtil.cs" />
+    <Compile Include="Log\ILog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Log\Log4NetLog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Log\LogEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Log\LogHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Log\LogLevel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Log\MongoDBLog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Memcached.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Misc.cs" />
     <Compile Include="Util\PageUtil.cs" />
-    <Compile Include="Util\StringUtils.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Safe\QueryString.cs" />
+    <Compile Include="Util\StringUtils.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Caching\readme.txt" />
-    <Content Include="Data\readme.txt" />
-    <Content Include="lib\ELinq.dll" />
-    <Content Include="lib\Enyim.Caching.dll" />
-    <Content Include="lib\log4net.dll" />
-    <Content Include="lib\MongoDB.Bson.dll" />
-    <Content Include="lib\MongoDB.Driver.dll" />
-    <Content Include="lib\Newtonsoft.Json.dll" />
-    <Content Include="lib\NLite.dll" />
-    <Content Include="lib\NVelocity.dll" />
-    <Content Include="lib\Yahoo.Yui.Compressor.NET20.dll" />
-    <Content Include="Log\readme.txt" />
+    <Content Include="readme.txt" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
