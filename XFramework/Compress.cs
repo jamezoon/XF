@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Yahoo.Yui.Compressor;
 using XFramework.Util;
 using XFramework.Safe;
+using XFramework.Log;
 
 namespace XFramework
 {
@@ -131,7 +132,10 @@ namespace XFramework
                 {
                     encoding = Encoding.GetEncoding(inputCharset);
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    LogUtil.Log("XFramework文件压缩编码转换异常", ex, LogLevel.Warn);
+                }
             }
 
             string rtnRst = string.Empty;
@@ -161,7 +165,7 @@ namespace XFramework
             }
             catch (Exception ex)
             {
-                LogUtil.Log("XFramework文件压缩异常", ex);
+                LogUtil.Log("XFramework文件压缩异常", ex, LogLevel.Warn);
             }
 
             return rtnRst;

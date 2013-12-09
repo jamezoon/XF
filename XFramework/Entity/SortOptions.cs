@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Mola.Framework.Common.Entity
+namespace XFramework.Entity
 {
     /// <summary>
     /// XFramework自定义排序枚举

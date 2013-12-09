@@ -528,9 +528,10 @@ namespace XFramework.Util
                 .Replace("%", "")
                 .Replace(";", "");
 
-            Regex regex = new Regex("select|update|insert|delete|alert|javascript", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            Regex regex = new Regex("select|update|insert|delete|javascript|script|alert|", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-            s = regex.Replace(s, "");
+            if (regex.IsMatch(s))
+                s = regex.Replace(s, "");
 
             return s;
         }
@@ -538,19 +539,17 @@ namespace XFramework.Util
         /// <summary>
         /// 获取指定长度的随机数字
         /// </summary>
-        /// <param name="length">密码长度，默认6位</param>
+        /// <param name="length">随机数长度长度，默认6位</param>
         /// <returns>指定长度的随机数字</returns>
-        public static string GetRadomNum(int length = 6)
+        public static int Radom(int length = 6)
         {
             int seed = (int)BitConverter.ToUInt32(Guid.NewGuid().ToByteArray(), 0);
 
             Random random = new Random(seed);
 
-            int _minValue = (int)Math.Pow(10, length - 1), _maxValue = (int)Math.Pow(10, length);
+            int minValue = (int)Math.Pow(10, length - 1), maxValue = (int)Math.Pow(10, length) + 1;
 
-            int radom = random.Next(_minValue, _maxValue);
-
-            return radom.ToString();
+            return random.Next(minValue, maxValue);
         }
 
         /// <summary>

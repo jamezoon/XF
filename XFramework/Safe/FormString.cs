@@ -90,8 +90,7 @@ namespace XFramework.Safe
 
             s = s.Trim();
 
-            if (s.Length > length)
-                s = StringUtils.GetSubString(s, length);
+            if (s.Length > length) s = StringUtils.GetSubString(s, length);
 
             s = StringUtils.GetSafeString(s);
 

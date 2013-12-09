@@ -5,6 +5,8 @@ using System.Text;
 using System.Net;
 using System.Collections.Generic;
 
+using XFramework.Log;
+
 namespace XFramework.Util
 {
     /// <summary>
@@ -85,9 +87,9 @@ namespace XFramework.Util
 
                 return httpWResp;
             }
-            catch (Exception exp)
+            catch (Exception ex)
             {
-                LogUtil.Log("XFramework底层Http请求异常", exp);
+                LogUtil.Log("XFramework底层Http请求异常", ex, LogLevel.Warn);
 
                 return null;
             }

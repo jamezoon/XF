@@ -27,8 +27,7 @@ namespace XFramework.Util
         {
             HttpCookie cookie = new HttpCookie(cookieName);
 
-            if (isEncrypt)
-                cookieValue = Crypt.DESEncrypt(cookieValue, DefaultCookieDESKey);
+            if (isEncrypt) cookieValue = Crypt.DESEncrypt(cookieValue, DefaultCookieDESKey);
 
             cookieValue = HttpUtility.UrlEncode(cookieValue);
 
@@ -40,8 +39,7 @@ namespace XFramework.Util
                 cookie.Domain = cookieDomain;
 
             //设置Cookie过期时间
-            if (cookieTime > 0)
-                cookie.Expires = DateTime.Now.AddMinutes(cookieTime);
+            if (cookieTime > 0) cookie.Expires = DateTime.Now.AddMinutes(cookieTime);
 
             HttpContext.Current.Response.Cookies.Set(cookie);
         }
