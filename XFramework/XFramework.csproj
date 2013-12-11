@@ -53,13 +53,16 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.XML" />
     <Reference Include="Yahoo.Yui.Compressor.NET20">
       <HintPath>..\..\lib\Yahoo.Yui.Compressor.NET20.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache\LocalCache.cs" />
     <Compile Include="Compress.cs" />
+    <Compile Include="Mvc\DateJsonResult.cs" />
     <Compile Include="Util\CookieUtil.cs" />
     <Compile Include="Safe\Crypt.cs">
       <SubType>Code</SubType>
@@ -102,7 +105,7 @@
     <Compile Include="Log\MongoDBLog.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Memcached.cs">
+    <Compile Include="Cache\Memcached.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Misc.cs" />
@@ -114,6 +117,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Cache\readme.txt" />
+    <Content Include="Data\readme.txt" />
+    <Content Include="Log\readme.txt" />
     <Content Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
