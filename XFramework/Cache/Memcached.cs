@@ -176,7 +176,7 @@ namespace XFramework.Cache
                 throw new ArgumentNullException("Memcached缓存的CacheKey不能为空");
 
             //将KEY值进行MD5方式加密
-            cacheKey = Crypt.MD5Encrypt(cacheKey);
+            cacheKey = MD5.Encrypt(cacheKey);
 
             string _version = GetRegionVersion(regionName);
 

@@ -27,7 +27,7 @@ namespace XFramework.Util
         {
             HttpCookie cookie = new HttpCookie(cookieName);
 
-            if (isEncrypt) cookieValue = Crypt.DESEncrypt(cookieValue, DefaultCookieDESKey);
+            if (isEncrypt) cookieValue = DES.Encrypt(cookieValue, DefaultCookieDESKey);
 
             cookieValue = HttpUtility.UrlEncode(cookieValue);
 
@@ -65,7 +65,7 @@ namespace XFramework.Util
             s = HttpUtility.UrlDecode(s);
 
             if (isEncrypt)
-                s = Crypt.DESDecrypt(s, DefaultCookieDESKey);
+                s = DES.Decrypt(s, DefaultCookieDESKey);
 
             return s;
         }

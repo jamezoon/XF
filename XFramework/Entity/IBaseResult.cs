@@ -11,13 +11,13 @@ namespace XFramework.Entity
     public interface IBaseResult
     {
         /// <summary>
-        /// 返回值
+        /// 是否成功
         /// </summary>
-        int Code { get; set; }
+        bool Success { get; set; }
 
         /// <summary>
         /// 返回值说明
         /// </summary>
-        string Msg { get; set; }
+        string Message { get; set; }
     }
 }

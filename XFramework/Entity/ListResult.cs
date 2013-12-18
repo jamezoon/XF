@@ -10,13 +10,13 @@ namespace XFramework.Entity
     public class ListResult<T> : ListData<T>, IBaseResult
     {
         /// <summary>
-        /// 返回值
+        /// 是否成功
         /// </summary>
-        public int Code { get; set; }
+        public bool Success { get; set; }
 
         /// <summary>
         /// 返回值说明
         /// </summary>
-        public string Msg { get; set; }
+        public string Message { get; set; }
     }
 }

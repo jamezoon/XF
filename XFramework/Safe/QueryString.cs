@@ -86,12 +86,9 @@ namespace XFramework.Safe
         /// <returns>URLQuery中指定KEY中的System.String类型值</returns>
         public static string SafeQ(string key, string defaultValue = "", int length = 50, short format = 0)
         {
-            string s = StringUtils.ToString(HttpContext.Current.Request.QueryString[key], defaultValue);
+            string s = StringUtils.ToString(HttpContext.Current.Request.QueryString[key], defaultValue).Trim();
 
-            s = s.Trim();
-
-            if (s.Length > length)
-                s = StringUtils.GetSubString(s, length);
+            if (s.Length > length) s = StringUtils.GetSubString(s, length);
 
             s = StringUtils.GetSafeString(s);
 

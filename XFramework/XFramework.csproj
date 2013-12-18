@@ -31,20 +31,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Enyim.Caching">
-      <HintPath>..\..\lib\Enyim.Caching.dll</HintPath>
+    <Reference Include="Enyim.Caching, Version=2.12.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Enyim.Caching.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\lib\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\..\lib\MongoDB.Bson.dll</HintPath>
+    <Reference Include="MongoDB.Bson, Version=1.8.1.20, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\MongoDB.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\..\lib\MongoDB.Driver.dll</HintPath>
+    <Reference Include="MongoDB.Driver, Version=1.8.1.20, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\MongoDB.Driver.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\lib\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.0.4.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -55,18 +60,21 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.XML" />
-    <Reference Include="Yahoo.Yui.Compressor.NET20">
-      <HintPath>..\..\lib\Yahoo.Yui.Compressor.NET20.dll</HintPath>
+    <Reference Include="Yahoo.Yui.Compressor.NET20, Version=1.6.0.2, Culture=neutral, PublicKeyToken=0734edc2d38ad47d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Yahoo.Yui.Compressor.NET20.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cache\LocalCache.cs" />
     <Compile Include="Compress.cs" />
     <Compile Include="Mvc\DateJsonResult.cs" />
+    <Compile Include="Mvc\ArgsModelBinder.cs" />
+    <Compile Include="Safe\Aes.cs" />
+    <Compile Include="Safe\Des.cs" />
+    <Compile Include="Safe\MD5.cs" />
+    <Compile Include="Safe\Request.cs" />
     <Compile Include="Util\CookieUtil.cs" />
-    <Compile Include="Safe\Crypt.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Data\DataCommand.cs" />
     <Compile Include="Data\DataCommandManager.cs" />
     <Compile Include="Data\DataMappingAttribute.cs" />
@@ -121,6 +129,12 @@
     <Content Include="Data\readme.txt" />
     <Content Include="Log\readme.txt" />
     <Content Include="readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XF.Api.Test\XF.Api.Test.csproj">
+      <Project>{F3289692-48CE-4114-9FC9-9E8BE2BB6E52}</Project>
+      <Name>XF.Api.Test</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
