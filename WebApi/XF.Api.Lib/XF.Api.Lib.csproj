@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{96EF2FFC-B870-4231-A58D-5516F48AD220}</ProjectGuid>
+    <ProjectGuid>{F02CDEB0-4FC7-4A90-B0CF-84363745B68C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XF.Api.Core</RootNamespace>
-    <AssemblyName>XF.Api.Core</AssemblyName>
+    <RootNamespace>XF.Api.Lib</RootNamespace>
+    <AssemblyName>XF.Api.Lib</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FastReflectionLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\FastReflectionLib.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.0.4.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
@@ -50,24 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiService.cs" />
-    <Compile Include="ApiServiceEntity.cs" />
-    <Compile Include="ApiServiceTokenEntity.cs" />
-    <Compile Include="Authenticator\CusCodeCheckAttribute.cs" />
-    <Compile Include="Authenticator\HttpAuthenticator.cs" />
-    <Compile Include="Authenticator\HttpAuthenticatorDispatcher.cs" />
-    <Compile Include="Authenticator\HttpBasicAuthenticator.cs" />
-    <Compile Include="Authenticator\HttpToken2Authenticator.cs" />
-    <Compile Include="Authenticator\HttpTokenAuthenticator.cs" />
-    <Compile Include="HttpAdapter.cs" />
+    <Compile Include="DefaultClient.cs" />
+    <Compile Include="HttpToken2AuthInfoEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestAuthInfoEntity.cs" />
+    <Compile Include="HttpWebUtils.cs" />
+    <Compile Include="XFApiException.cs" />
+    <Compile Include="XFRequest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XF.Api.Lib\XF.Api.Lib.csproj">
-      <Project>{F02CDEB0-4FC7-4A90-B0CF-84363745B68C}</Project>
-      <Name>XF.Api.Lib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XFramework\XFramework.csproj">
+    <ProjectReference Include="..\..\XFramework\XFramework.csproj">
       <Project>{C559CACD-FF3E-4280-AD29-E10B90CEDE8B}</Project>
       <Name>XFramework</Name>
     </ProjectReference>
