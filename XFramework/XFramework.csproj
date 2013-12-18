@@ -130,12 +130,6 @@
     <Content Include="Log\readme.txt" />
     <Content Include="readme.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\XF.Api.Test\XF.Api.Test.csproj">
-      <Project>{F3289692-48CE-4114-9FC9-9E8BE2BB6E52}</Project>
-      <Name>XF.Api.Test</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
