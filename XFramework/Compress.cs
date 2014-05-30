@@ -20,12 +20,12 @@ namespace XFramework
         /// <summary>
         /// 文件压缩类的构造函数
         /// </summary>
-        /// <param name="_isJsFile">是否是js文件压缩</param>
-        /// <param name="_directory">文件存放的目录位置</param>
-        public Compress(bool _isJsFile, string _directory)
+        /// <param name="isJsFile">是否是js文件压缩</param>
+        /// <param name="directory">文件存放的目录位置</param>
+        public Compress(bool isJsFile, string directory)
         {
-            IsJsFile = _isJsFile;
-            DirectoryPath = _directory;
+            IsJsFile = isJsFile;
+            DirectoryPath = directory;
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace XFramework
 
             string[] files = p.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
-            if (files == null || files.Length == 0) return;
+            if (files.Length == 0) return;
 
             StringBuilder sb = new StringBuilder();
 
@@ -119,7 +119,7 @@ namespace XFramework
         /// <summary>
         /// 获取文件压缩内容
         /// </summary>
-        /// <param name="filePath">文件名</param>
+        /// <param name="fileName">文件名</param>
         /// <param name="inputCharset">web服务器编码格式</param>
         /// <returns>文件压缩内容</returns>
         private string GetCompressContent(string fileName, string inputCharset)
@@ -154,13 +154,17 @@ namespace XFramework
                 {
                     if (filePath.EndsWith(".no.js") && !filePath.EndsWith(".min.js")) return rtnRst;
 
-                    rtnRst = new JavaScriptCompressor(rtnRst, false, encoding, System.Globalization.CultureInfo.CurrentCulture).Compress();
+                    var compressor = new JavaScriptCompressor { Encoding = encoding };
+
+                    rtnRst = compressor.Compress(rtnRst);
                 }
                 else
                 {
                     if (filePath.EndsWith(".no.css") && !filePath.EndsWith(".min.css")) return rtnRst;
 
-                    rtnRst = CssCompressor.Compress(rtnRst);
+                    var compressor = new CssCompressor();
+
+                    rtnRst = compressor.Compress(rtnRst);
                 }
             }
             catch (Exception ex)
