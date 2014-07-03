@@ -44,6 +44,10 @@ namespace XFramework.Log
                     logger.Fatal(logEntity);
                     break;
 
+                case LogLevel.Info:
+                    logger.Info(logEntity);
+                    break;
+
                 default:
                     logger.Error(logEntity);
                     break;

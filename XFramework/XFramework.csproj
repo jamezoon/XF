@@ -153,6 +153,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Misc.cs" />
+    <Compile Include="Util\MailUtil.cs" />
     <Compile Include="Util\PageUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Safe\QueryString.cs" />

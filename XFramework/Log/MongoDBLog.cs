@@ -39,6 +39,11 @@ namespace XFramework.Log
         private const string TableNameKey_Fatal = "XFrameworkMongoDBLog.TableName.Fatal";
 
         /// <summary>
+        /// MongoDB数据库记录Info日志表名
+        /// </summary>
+        private const string TableNameKey_Info = "XFrameworkMongoDBLog.TableName.Info";
+
+        /// <summary>
         /// MongoDB记录日志
         /// </summary>
         /// <param name="logEntity">日志信息实体</param>
@@ -59,6 +64,9 @@ namespace XFramework.Log
                     break;
                 case LogLevel.Fatal:
                     collectionName = ConfigurationManager.AppSettings[TableNameKey_Fatal];
+                    break;
+                case LogLevel.Info:
+                    collectionName = ConfigurationManager.AppSettings[TableNameKey_Info];
                     break;
                 default:
                     collectionName = ConfigurationManager.AppSettings[TableNameKey_Error];

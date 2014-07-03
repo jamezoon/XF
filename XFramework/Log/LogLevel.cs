@@ -28,6 +28,11 @@ namespace XFramework.Log
         /// <summary>
         /// 严重错误信息，整个程序已不能使用
         /// </summary>
-        Fatal = 4
+        Fatal = 4,
+
+        /// <summary>
+        /// 严重错误信息，整个程序已不能使用
+        /// </summary>
+        Info = 5
     }
 }
