@@ -66,7 +66,7 @@ namespace XFramework.Cache
             //默认缓存10分钟
             if (System.Math.Abs(ts.TotalMinutes) > minute) return null;
 
-            return data == null ? null : data.CacheData;
+            return data.CacheData;
         }
 
         /// <summary>

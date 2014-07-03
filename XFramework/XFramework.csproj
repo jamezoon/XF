@@ -166,12 +166,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Cache\readme.txt" />
-    <Content Include="Data\readme.txt" />
-    <Content Include="Log\readme.txt" />
-    <Content Include="readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
