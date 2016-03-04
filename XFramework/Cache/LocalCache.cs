@@ -6,7 +6,7 @@ using System.Text;
 namespace XFramework.Cache
 {
     /// <summary>
-    /// 采用惰性过期机制的本机缓存
+    /// 采用惰性过期机制的本机缓存123
     /// </summary>
     public sealed class LocalCache
     {
